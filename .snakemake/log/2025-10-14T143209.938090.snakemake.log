@@ -1,0 +1,12 @@
+Building DAG of jobs...
+MissingInputException in rule all in file /project/snakefile, line 1:
+Missing input files for rule all:
+    affected files:
+        data/gsea/gsea_results_i_interaction.csv
+        data/gsea/gsea_results_ter_i.csv
+        data/gsea/gsea_results_res_ii.csv
+        data/gsea/gsea_results_ii_interaction.csv
+        data/gsea/gsea_results_ter_ii.csv
+        data/gsea/gsea_results_res_i.csv
+        data/gsea/gsea_results_all.csv
+        data/gsea/gsea_results_i_and_ii_interaction.csv

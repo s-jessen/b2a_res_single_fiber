@@ -1,0 +1,31 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+data_prep               1
+figure1                 1
+figure2                 1
+figure3                 1
+figure4                 1
+figure5                 1
+figure6                 1
+gsea                    1
+gsea_interaction        1
+limma                   1
+total                  11
+
+Select jobs to execute...
+ProtectedOutputException in rule data_prep in file /home/sj/repos/manuscript_beta2_single_fiber_snakemake/snakefile, line 69:
+Write-protected output files for rule data_prep:
+    output: data/metadata.rds, data/se_raw.rds, data/se.rds, data/df_long.rds, data/df_long_l2fc.rds, data/df_long_l2fc_mean.rds
+    affected files:
+        data/metadata.rds
+        data/se_raw.rds
+        data/se.rds
+        data/df_long.rds
+        data/df_long_l2fc.rds
+        data/df_long_l2fc_mean.rds

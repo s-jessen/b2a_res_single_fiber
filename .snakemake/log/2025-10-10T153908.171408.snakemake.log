@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+figure4                 1
+figure5                 1
+gsea                    1
+gsea_interaction        1
+total                   5
+
+Select jobs to execute...
+
+[Fri Oct 10 15:39:08 2025]
+rule gsea:
+    input: R/functions.R, data/results_res_main.rds, data/results_res_i.rds, data/results_res_ii.rds, data/results_res_interaction.rds, data/results_ter_main.rds, data/results_ter_i.rds, data/results_ter_ii.rds, data/results_ter_interaction.rds
+    output: data/gsea_res_i.rds, data/gsea_res_ii.rds, data/gsea_ter_i.rds, data/gsea_ter_ii.rds, data/gsea_all.rds, data/gsea/gsea_results_res_i.csv, data/gsea/gsea_results_res_ii.csv, data/gsea/gsea_results_ter_i.csv, data/gsea/gsea_results_ter_ii.csv, data/gsea/gsea_results_all.csv
+    jobid: 3
+    reason: Missing output files: data/gsea/gsea_results_res_ii.csv, data/gsea/gsea_results_ter_i.csv, data/gsea/gsea_results_res_i.csv, data/gsea_all.rds, data/gsea_ter_i.rds, data/gsea/gsea_results_ter_ii.csv, data/gsea/gsea_results_all.csv, data/gsea_res_ii.rds, data/gsea_res_i.rds, data/gsea_ter_ii.rds
+    resources: tmpdir=/tmp
+
+[Fri Oct 10 15:39:08 2025]
+rule gsea_interaction:
+    input: R/functions.R, data/results_i_and_ii_interaction.rds, data/results_i_interaction.rds, data/results_ii_interaction.rds
+    output: data/gsea_i_and_ii_interaction.rds, data/gsea_i_interaction.rds, data/gsea_ii_interaction.rds, data/gsea/gsea_results_i_and_ii_interaction.csv, data/gsea/gsea_results_i_interaction.csv, data/gsea/gsea_results_ii_interaction.csv
+    jobid: 4
+    reason: Missing output files: data/gsea/gsea_results_ii_interaction.csv, data/gsea/gsea_results_i_interaction.csv, data/gsea_i_and_ii_interaction.rds, data/gsea_ii_interaction.rds, data/gsea_i_interaction.rds, data/gsea/gsea_results_i_and_ii_interaction.csv
+    resources: tmpdir=/tmp
+
+[Fri Oct 10 15:39:16 2025]
+Error in rule gsea_interaction:
+    jobid: 4
+    input: R/functions.R, data/results_i_and_ii_interaction.rds, data/results_i_interaction.rds, data/results_ii_interaction.rds
+    output: data/gsea_i_and_ii_interaction.rds, data/gsea_i_interaction.rds, data/gsea_ii_interaction.rds, data/gsea/gsea_results_i_and_ii_interaction.csv, data/gsea/gsea_results_i_interaction.csv, data/gsea/gsea_results_ii_interaction.csv
+
+RuleException:
+CalledProcessError in file /home/sj/repos/manuscript_beta2_single_fiber_snakemake/snakefile, line 179:
+Command 'set -euo pipefail;  Rscript --vanilla /home/sj/repos/manuscript_beta2_single_fiber_snakemake/.snakemake/scripts/tmp6znvi5vh.gsea_interaction.R' returned non-zero exit status 1.
+  File "/home/sj/repos/manuscript_beta2_single_fiber_snakemake/snakefile", line 179, in __rule_gsea_interaction
+  File "/home/sj/miniforge3/envs/snakemake_env/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+[Fri Oct 10 15:40:07 2025]
+Finished job 3.
+1 of 5 steps (20%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2025-10-10T153908.171408.snakemake.log

@@ -1,0 +1,2 @@
+SyntaxError in file /home/sj/repos/manuscript_beta2_single_fiber_snakemake/snakefile, line 90:
+Unexpected keyword functions in rule definition (snakefile, line 90)

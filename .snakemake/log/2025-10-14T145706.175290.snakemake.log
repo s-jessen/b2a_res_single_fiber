@@ -1,0 +1,42 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 11
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count
+---------  -------
+all              1
+data_prep        1
+figure2          1
+figure3          1
+figure4          1
+figure5          1
+figure6          1
+gsea             1
+limma            1
+total            9
+
+Select jobs to execute...
+
+[Tue Oct 14 14:57:06 2025]
+rule data_prep:
+    input: R/settings.R, data-raw/proteomic_data.csv, data-raw/design.xlsx, data-raw/keywords.xlsx, data-raw/mitocarta.xls
+    output: data/metadata.rds, data/se_raw.rds, data/se.rds, data/df_long.rds, data/df_long_l2fc.rds, data/df_long_l2fc_mean.rds, data/supplementary/Supplementary Table S1.xlsx, data/supplementary/Supplementary Table S2.xlsx
+    jobid: 2
+    reason: Code has changed since last execution
+    resources: tmpdir=/tmp
+
+[Tue Oct 14 14:57:16 2025]
+Error in rule data_prep:
+    jobid: 2
+    input: R/settings.R, data-raw/proteomic_data.csv, data-raw/design.xlsx, data-raw/keywords.xlsx, data-raw/mitocarta.xls
+    output: data/metadata.rds, data/se_raw.rds, data/se.rds, data/df_long.rds, data/df_long_l2fc.rds, data/df_long_l2fc_mean.rds, data/supplementary/Supplementary Table S1.xlsx, data/supplementary/Supplementary Table S2.xlsx
+
+RuleException:
+CalledProcessError in file /project/snakefile, line 87:
+Command 'set -euo pipefail;  Rscript --vanilla /project/.snakemake/scripts/tmpavoh_8kd.data_preparation.R' returned non-zero exit status 1.
+  File "/project/snakefile", line 87, in __rule_data_prep
+  File "/opt/conda/envs/snakemake_env/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2025-10-14T145706.175290.snakemake.log

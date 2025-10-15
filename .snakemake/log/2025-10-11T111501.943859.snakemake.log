@@ -1,0 +1,154 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+data_prep               1
+figure1                 1
+figure2                 1
+figure3                 1
+figure4                 1
+figure5                 1
+figure6                 1
+gsea                    1
+gsea_interaction        1
+limma                   1
+total                  11
+
+Select jobs to execute...
+
+[Sat Oct 11 11:15:02 2025]
+rule data_prep:
+    input: R/settings.R, data-raw/proteomic_data.csv, data-raw/design.xlsx, data-raw/keywords.xlsx, data-raw/mitocarta.xls
+    output: data/metadata.rds, data/se_raw.rds, data/se.rds, data/df_long.rds, data/df_long_l2fc.rds, data/df_long_l2fc_mean.rds
+    jobid: 2
+    reason: Missing output files: data/df_long_l2fc_mean.rds, data/se_raw.rds, data/metadata.rds, data/df_long.rds, data/df_long_l2fc.rds, data/se.rds
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:15:02 2025]
+rule figure1:
+    input: R/functions.R, R/settings.R, data-raw/functional_data.xlsx
+    output: data/figures/figure1/functional_measures.svg
+    jobid: 5
+    reason: Missing output files: data/figures/figure1/functional_measures.svg
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:15:05 2025]
+Finished job 5.
+1 of 11 steps (9%) done
+[Sat Oct 11 11:15:18 2025]
+Finished job 2.
+2 of 11 steps (18%) done
+Select jobs to execute...
+
+[Sat Oct 11 11:15:18 2025]
+rule figure6:
+    input: R/functions.R, R/settings.R, data/df_long.rds, data/df_long_l2fc.rds
+    output: data/figures/figure6/ribosomal_proteins.svg, data/figures/figure6/mitochondrial_proteins.svg, data/figures/figure6/structural_go_terms.svg, data/figures/figure6/metabolic_go_terms.svg
+    jobid: 10
+    reason: Missing output files: data/figures/figure6/structural_go_terms.svg, data/figures/figure6/ribosomal_proteins.svg, data/figures/figure6/mitochondrial_proteins.svg, data/figures/figure6/metabolic_go_terms.svg; Input files updated by another job: data/df_long.rds, data/df_long_l2fc.rds
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:15:18 2025]
+rule limma:
+    input: R/functions.R, data/se.rds
+    output: data/results_main.rds, data/results_i.rds, data/results_ii.rds, data/results_interaction.rds, data/results_ter_main.rds, data/results_ter_i.rds, data/results_ter_ii.rds, data/results_ter_interaction.rds, data/results_res_main.rds, data/results_res_i.rds, data/results_res_ii.rds, data/results_res_interaction.rds, data/results.rds, data/results_i_and_ii_interaction.rds, data/results_i_interaction.rds, data/results_ii_interaction.rds, data/results_myh_ii_vs_i.rds
+    jobid: 1
+    reason: Missing output files: data/results_res_interaction.rds, data/results_ii_interaction.rds, data/results_i_interaction.rds, data/results_ii.rds, data/results_res_ii.rds, data/results_ter_interaction.rds, data/results_res_i.rds, data/results.rds, data/results_ter_main.rds, data/results_i.rds, data/results_interaction.rds, data/results_ter_i.rds, data/results_i_and_ii_interaction.rds, data/results_ter_ii.rds, data/results_res_main.rds, data/results_main.rds, data/results_myh_ii_vs_i.rds; Input files updated by another job: data/se.rds
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:15:46 2025]
+Finished job 1.
+3 of 11 steps (27%) done
+Select jobs to execute...
+
+[Sat Oct 11 11:15:46 2025]
+rule figure2:
+    input: R/functions.R, R/settings.R, data/df_long.rds, data/results_myh_ii_vs_i.rds, data/se_raw.rds, data/se.rds, data/metadata.rds
+    output: data/myh_distribution.csv, data/figures/figure2/myh_distribution.svg, data/figures/figure2/venn_myh.svg, data/figures/figure2/median_log10_intensity.svg, data/figures/figure2/myh_volcano.svg, data/figures/figure2/PCA.svg, data/figures/figure2/loadings.svg
+    jobid: 6
+    reason: Missing output files: data/figures/figure2/myh_distribution.svg, data/myh_distribution.csv, data/figures/figure2/myh_volcano.svg, data/figures/figure2/venn_myh.svg, data/figures/figure2/PCA.svg, data/figures/figure2/median_log10_intensity.svg, data/figures/figure2/loadings.svg; Input files updated by another job: data/se.rds, data/se_raw.rds, data/metadata.rds, data/results_myh_ii_vs_i.rds, data/df_long.rds
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:15:46 2025]
+rule gsea:
+    input: R/functions.R, data/results_res_main.rds, data/results_res_i.rds, data/results_res_ii.rds, data/results_res_interaction.rds, data/results_ter_main.rds, data/results_ter_i.rds, data/results_ter_ii.rds, data/results_ter_interaction.rds
+    output: data/gsea_res_i.rds, data/gsea_res_ii.rds, data/gsea_ter_i.rds, data/gsea_ter_ii.rds, data/gsea_all.rds, data/gsea/gsea_results_res_i.csv, data/gsea/gsea_results_res_ii.csv, data/gsea/gsea_results_ter_i.csv, data/gsea/gsea_results_ter_ii.csv, data/gsea/gsea_results_all.csv
+    jobid: 3
+    reason: Missing output files: data/gsea_res_ii.rds, data/gsea_ter_ii.rds, data/gsea_all.rds, data/gsea/gsea_results_all.csv, data/gsea_ter_i.rds, data/gsea_res_i.rds, data/gsea/gsea_results_res_i.csv, data/gsea/gsea_results_ter_i.csv, data/gsea/gsea_results_ter_ii.csv, data/gsea/gsea_results_res_ii.csv; Input files updated by another job: data/results_res_interaction.rds, data/results_res_ii.rds, data/results_ter_interaction.rds, data/results_res_i.rds, data/results_ter_main.rds, data/results_ter_i.rds, data/results_ter_ii.rds, data/results_res_main.rds
+    resources: tmpdir=/tmp
+
+
+[Sat Oct 11 11:15:46 2025]
+rule figure3:
+    input: R/functions.R, R/settings.R, data/results_main.rds, data/results_i.rds, data/results_ii.rds, data/results_interaction.rds, data/results_ter_main.rds, data/results_ter_i.rds, data/results_ter_ii.rds, data/results_ter_interaction.rds, data/results_res_main.rds, data/results_res_i.rds, data/results_res_ii.rds, data/results_res_interaction.rds
+    output: data/figures/figure3/volcanoes.svg
+    jobid: 7
+    reason: Missing output files: data/figures/figure3/volcanoes.svg; Input files updated by another job: data/results_res_interaction.rds, data/results_ii.rds, data/results_res_ii.rds, data/results_i.rds, data/results_ter_interaction.rds, data/results_res_i.rds, data/results_ter_main.rds, data/results_interaction.rds, data/results_ter_i.rds, data/results_ter_ii.rds, data/results_res_main.rds, data/results_main.rds
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:15:46 2025]
+rule gsea_interaction:
+    input: R/functions.R, data/results_i_and_ii_interaction.rds, data/results_i_interaction.rds, data/results_ii_interaction.rds
+    output: data/gsea_i_and_ii_interaction.rds, data/gsea_i_interaction.rds, data/gsea_ii_interaction.rds, data/gsea/gsea_results_i_and_ii_interaction.csv, data/gsea/gsea_results_i_interaction.csv, data/gsea/gsea_results_ii_interaction.csv
+    jobid: 4
+    reason: Missing output files: data/gsea/gsea_results_i_and_ii_interaction.csv, data/gsea/gsea_results_ii_interaction.csv, data/gsea_i_interaction.rds, data/gsea_ii_interaction.rds, data/gsea_i_and_ii_interaction.rds, data/gsea/gsea_results_i_interaction.csv; Input files updated by another job: data/results_i_and_ii_interaction.rds, data/results_ii_interaction.rds, data/results_i_interaction.rds
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:15:54 2025]
+Finished job 7.
+4 of 11 steps (36%) done
+[Sat Oct 11 11:16:02 2025]
+Finished job 6.
+5 of 11 steps (45%) done
+[Sat Oct 11 11:16:28 2025]
+Finished job 10.
+6 of 11 steps (55%) done
+[Sat Oct 11 11:16:51 2025]
+Finished job 3.
+7 of 11 steps (64%) done
+Select jobs to execute...
+
+[Sat Oct 11 11:16:51 2025]
+rule figure4:
+    input: R/functions.R, R/settings.R, data/df_long.rds, data/df_long_l2fc_mean.rds, data/results_ter_i.rds, data/results_ter_ii.rds, data/results_res_i.rds, data/results_res_ii.rds, data/gsea_all.rds
+    output: data/top25_upregulated.csv, data/myh6_abundances.csv, data/correlations_i_vs_ii.csv, data/correlations_res_vs_b2a.csv, data/figures/figure4/venn.svg, data/figures/figure4/top25_upregulated.svg, data/figures/figure4/myh6.svg, data/figures/figure4/cor_i_vs_ii.svg, data/figures/figure4/cor_res_vs_b2a.svg, data/figures/figure4/gsea.svg
+    jobid: 8
+    reason: Missing output files: data/figures/figure4/cor_i_vs_ii.svg, data/figures/figure4/top25_upregulated.svg, data/correlations_res_vs_b2a.csv, data/correlations_i_vs_ii.csv, data/figures/figure4/venn.svg, data/figures/figure4/cor_res_vs_b2a.svg, data/figures/figure4/gsea.svg, data/myh6_abundances.csv, data/figures/figure4/myh6.svg, data/top25_upregulated.csv; Input files updated by another job: data/df_long_l2fc_mean.rds, data/results_ter_i.rds, data/results_ter_ii.rds, data/results_res_ii.rds, data/results_res_i.rds, data/gsea_all.rds, data/df_long.rds
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:16:58 2025]
+Finished job 8.
+8 of 11 steps (73%) done
+[Sat Oct 11 11:17:00 2025]
+Finished job 4.
+9 of 11 steps (82%) done
+Select jobs to execute...
+
+[Sat Oct 11 11:17:00 2025]
+rule figure5:
+    input: R/functions.R, R/settings.R, data/results_i_and_ii_interaction.rds, data/results_i_interaction.rds, data/results_ii_interaction.rds, data/gsea_i_and_ii_interaction.rds, data/gsea_i_interaction.rds, data/gsea_ii_interaction.rds
+    output: data/figures/figure5/volcanoes.svg, data/figures/figure5/gsea.svg
+    jobid: 9
+    reason: Missing output files: data/figures/figure5/gsea.svg, data/figures/figure5/volcanoes.svg; Input files updated by another job: data/gsea_ii_interaction.rds, data/results_i_and_ii_interaction.rds, data/results_ii_interaction.rds, data/results_i_interaction.rds, data/gsea_i_and_ii_interaction.rds, data/gsea_i_interaction.rds
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:17:09 2025]
+Finished job 9.
+10 of 11 steps (91%) done
+Select jobs to execute...
+
+[Sat Oct 11 11:17:09 2025]
+localrule all:
+    input: data/results.rds, data/results_i_and_ii_interaction.rds, data/results_i_interaction.rds, data/results_ii_interaction.rds, data/results_myh_ii_vs_i.rds, data/gsea_res_i.rds, data/gsea_res_ii.rds, data/gsea_ter_i.rds, data/gsea_ter_ii.rds, data/gsea_all.rds, data/gsea_i_and_ii_interaction.rds, data/gsea_i_interaction.rds, data/gsea_ii_interaction.rds, data/gsea/gsea_results_res_i.csv, data/gsea/gsea_results_res_ii.csv, data/gsea/gsea_results_ter_i.csv, data/gsea/gsea_results_ter_ii.csv, data/gsea/gsea_results_all.csv, data/gsea/gsea_results_i_and_ii_interaction.csv, data/gsea/gsea_results_i_interaction.csv, data/gsea/gsea_results_ii_interaction.csv, data/figures/figure1/functional_measures.svg, data/figures/figure2/myh_distribution.svg, data/figures/figure2/venn_myh.svg, data/figures/figure2/median_log10_intensity.svg, data/figures/figure2/myh_volcano.svg, data/figures/figure2/PCA.svg, data/figures/figure2/loadings.svg, data/myh_distribution.csv, data/figures/figure3/volcanoes.svg, data/figures/figure4/venn.svg, data/figures/figure4/top25_upregulated.svg, data/figures/figure4/myh6.svg, data/figures/figure4/cor_i_vs_ii.svg, data/figures/figure4/cor_res_vs_b2a.svg, data/figures/figure4/gsea.svg, data/top25_upregulated.csv, data/myh6_abundances.csv, data/correlations_i_vs_ii.csv, data/correlations_res_vs_b2a.csv, data/figures/figure5/volcanoes.svg, data/figures/figure5/gsea.svg, data/figures/figure6/ribosomal_proteins.svg, data/figures/figure6/mitochondrial_proteins.svg, data/figures/figure6/structural_go_terms.svg, data/figures/figure6/metabolic_go_terms.svg
+    jobid: 0
+    reason: Input files updated by another job: data/figures/figure3/volcanoes.svg, data/figures/figure4/cor_i_vs_ii.svg, data/figures/figure2/myh_distribution.svg, data/myh_distribution.csv, data/gsea/gsea_results_i_and_ii_interaction.csv, data/figures/figure2/venn_myh.svg, data/figures/figure4/venn.svg, data/gsea/gsea_results_all.csv, data/gsea/gsea_results_ter_i.csv, data/gsea/gsea_results_ter_ii.csv, data/figures/figure2/median_log10_intensity.svg, data/gsea_i_and_ii_interaction.rds, data/figures/figure5/volcanoes.svg, data/gsea/gsea_results_i_interaction.csv, data/figures/figure2/loadings.svg, data/results_myh_ii_vs_i.rds, data/top25_upregulated.csv, data/gsea_res_ii.rds, data/gsea_ter_ii.rds, data/correlations_res_vs_b2a.csv, data/correlations_i_vs_ii.csv, data/figures/figure2/myh_volcano.svg, data/gsea_i_interaction.rds, data/figures/figure4/cor_res_vs_b2a.svg, data/gsea_res_i.rds, data/results_i_and_ii_interaction.rds, data/figures/figure5/gsea.svg, data/gsea/gsea_results_res_ii.csv, data/figures/figure6/metabolic_go_terms.svg, data/results_i_interaction.rds, data/results.rds, data/figures/figure6/mitochondrial_proteins.svg, data/myh6_abundances.csv, data/figures/figure4/myh6.svg, data/figures/figure4/top25_upregulated.svg, data/results_ii_interaction.rds, data/gsea/gsea_results_ii_interaction.csv, data/gsea_all.rds, data/figures/figure2/PCA.svg, data/gsea_ter_i.rds, data/figures/figure4/gsea.svg, data/gsea_ii_interaction.rds, data/gsea/gsea_results_res_i.csv, data/figures/figure1/functional_measures.svg, data/figures/figure6/ribosomal_proteins.svg, data/figures/figure6/structural_go_terms.svg
+    resources: tmpdir=/tmp
+
+[Sat Oct 11 11:17:09 2025]
+Finished job 0.
+11 of 11 steps (100%) done
+Complete log: .snakemake/log/2025-10-11T111501.943859.snakemake.log

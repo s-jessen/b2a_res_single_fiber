@@ -1,0 +1,55 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+data_prep               1
+figure1                 1
+figure2                 1
+figure3                 1
+figure4                 1
+figure5                 1
+figure6                 1
+gsea                    1
+gsea_interaction        1
+limma                   1
+total                  11
+
+Select jobs to execute...
+
+[Fri Oct 10 15:11:06 2025]
+rule figure1:
+    input: R/functions.R, R/settings.R, data-raw/functional_data.xlsx
+    output: data/figures/figure1/functional_measures.svg
+    jobid: 5
+    reason: Missing output files: data/figures/figure1/functional_measures.svg
+    resources: tmpdir=/tmp
+
+[Fri Oct 10 15:11:06 2025]
+rule data_prep:
+    input: R/settings.R, data-raw/proteomic_data.csv, data-raw/design.xlsx, data-raw/keywords.xlsx, data-raw/mitocarta.xls
+    output: data/metadata.rds, data/se_raw.rds, data/se.rds, data/df_long.rds, data/df_long_l2fc.rds, data/df_long_l2fc_mean.rds
+    jobid: 0
+    reason: Forced execution
+    resources: tmpdir=/tmp
+
+[Fri Oct 10 15:11:09 2025]
+Error in rule figure1:
+    jobid: 5
+    input: R/functions.R, R/settings.R, data-raw/functional_data.xlsx
+    output: data/figures/figure1/functional_measures.svg
+
+RuleException:
+CalledProcessError in file /home/sj/repos/manuscript_beta2_single_fiber_snakemake/snakefile, line 187:
+Command 'set -euo pipefail;  Rscript --vanilla /home/sj/repos/manuscript_beta2_single_fiber_snakemake/.snakemake/scripts/tmp7i7uhizq.figure1.R' returned non-zero exit status 1.
+  File "/home/sj/repos/manuscript_beta2_single_fiber_snakemake/snakefile", line 187, in __rule_figure1
+  File "/home/sj/miniforge3/envs/snakemake_env/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+[Fri Oct 10 15:11:22 2025]
+Finished job 0.
+1 of 11 steps (9%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2025-10-10T151106.254182.snakemake.log

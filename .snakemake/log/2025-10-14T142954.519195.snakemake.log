@@ -1,0 +1,26 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 11
+Rules claiming more threads will be scaled down.
+Job stats:
+job        count
+-------  -------
+all            1
+figure2        1
+figure3        1
+figure4        1
+figure5        1
+gsea           1
+limma          1
+total          7
+
+Select jobs to execute...
+
+[Tue Oct 14 14:29:55 2025]
+rule limma:
+    input: R/functions.R, data/se.rds
+    output: data/results_main.rds, data/results_i.rds, data/results_ii.rds, data/results_interaction.rds, data/results_ter_main.rds, data/results_ter_i.rds, data/results_ter_ii.rds, data/results_ter_interaction.rds, data/results_res_main.rds, data/results_res_i.rds, data/results_res_ii.rds, data/results_res_interaction.rds, data/results.rds, data/results_i_and_ii_interaction.rds, data/results_i_interaction.rds, data/results_ii_interaction.rds, data/results_myh_ii_vs_i.rds, data/supplementary/Supplementary Table S3.xlsx
+    jobid: 1
+    reason: Code has changed since last execution
+    resources: tmpdir=/tmp
+

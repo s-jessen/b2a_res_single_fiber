@@ -13,8 +13,8 @@ To reproduce the full analysis in a portable and reproducible environment:
 
 ### 1. 📥 Clone the repository
 ```bash
-git clone https://github.com/s-jessen/manuscript_beta2_single_fiber.git
-cd manuscript_beta2_single_fiber
+git clone https://github.com/s-jessen/b2a_res_single_fiber.git
+cd b2a_res_single_fiber
 ```
 
 ### 2. 🐳 Install Docker (if not already installed)
